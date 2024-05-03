@@ -15,6 +15,10 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe());
 
+  app.getHttpAdapter().get('/', (req, res) => {
+    res.redirect(process.env.BASE_URL);
+  });
+
   await app.listen(process.env.PORT || 8080);
 }
 bootstrap();
