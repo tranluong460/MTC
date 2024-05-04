@@ -19,6 +19,6 @@ async function bootstrap() {
     res.redirect(process.env.BASE_URL);
   });
 
-  await app.listen(process.env.PORT || 8080);
+  await app.listen(process.env.PORT);
 }
 bootstrap();
