@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { RoleModule } from './role/role.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { AppService } from './app.service';
       global: true,
       secret: process.env.SECRET_KEY,
     }),
+    RoleModule,
   ],
   controllers: [AppController],
   providers: [AppService],
