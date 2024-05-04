@@ -1,10 +1,19 @@
-import { Controller, Get, Body, Patch, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Body,
+  Patch,
+  Param,
+  Req,
+  BadRequestException,
+} from '@nestjs/common';
 
 import { UserService } from './user.service';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { IsPublic } from '../common/public.decorator';
 import { CheckAbilities } from '../common/casl-ability.decorator';
 import { Action, Subjects } from '../ability/casl-ability.factory';
+import { CustomRequest } from '../interface/request';
 
 @Controller('user')
 export class UserController {
@@ -25,7 +34,18 @@ export class UserController {
 
   @CheckAbilities({ action: Action.Update, subject: Subjects.User })
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+  update(
+    @Req() req: CustomRequest,
+    @Param('id') id: string,
+    @Body() updateUserDto: UpdateUserDto,
+  ) {
+    const user = req.user;
+
+    if (user._id.toString() !== id)
+      throw new BadRequestException(
+        'Bạn không được phép cập nhật người dùng này',
+      );
+
     return this.userService.update(id, updateUserDto);
   }
 }
