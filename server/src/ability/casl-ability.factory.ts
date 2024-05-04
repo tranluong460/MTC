@@ -42,6 +42,7 @@ export class CaslAbilityFactory {
       can(Action.Publish, Subjects.User);
       can(Action.Publish, Subjects.Category);
       can(Action.Publish, Subjects.Faction);
+      can(Action.Publish, Subjects.World);
     }
 
     user?.abilities_list.map(({ action, subject }) => {
