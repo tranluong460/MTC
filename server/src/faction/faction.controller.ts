@@ -26,7 +26,7 @@ export class FactionController {
   }
 
   @IsPublic()
-  @CheckAbilities({ action: Action.Read, subject: Subjects.Faction })
+  @CheckAbilities({ action: Action.Publish, subject: Subjects.Faction })
   @Get()
   findAll() {
     return this.factionService.findAll();
