@@ -23,6 +23,9 @@ export enum Subjects {
   Role = 'role',
   User = 'user',
   Author = 'author',
+  Category = 'category',
+  Faction = 'faction',
+  World = 'world',
 }
 
 export type AppAbility = MongoAbility<[Action, Subjects]>;

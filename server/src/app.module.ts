@@ -13,6 +13,9 @@ import { AbilityModule } from './ability/ability.module';
 import { AuthGuard } from './auth/auth.guard';
 import { CaslAbilityGuard } from './ability/casl-ability.guard';
 import { AuthorModule } from './author/author.module';
+import { CategoryModule } from './category/category.module';
+import { FactionModule } from './faction/faction.module';
+import { WorldModule } from './world/world.module';
 
 @Module({
   imports: [
@@ -27,6 +30,9 @@ import { AuthorModule } from './author/author.module';
     AuthModule,
     AbilityModule,
     AuthorModule,
+    CategoryModule,
+    FactionModule,
+    WorldModule,
   ],
   controllers: [AppController],
   providers: [
