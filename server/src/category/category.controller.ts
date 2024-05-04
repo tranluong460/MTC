@@ -14,7 +14,6 @@ import { UpdateCategoryDto } from './dto/update-category.dto';
 import { IsPublic } from '../common/public.decorator';
 import { CheckAbilities } from '../common/casl-ability.decorator';
 import { Action, Subjects } from '../ability/casl-ability.factory';
-import { Category } from './entities/category.entity';
 
 @Controller('category')
 export class CategoryController {
@@ -27,7 +26,7 @@ export class CategoryController {
   }
 
   @IsPublic()
-  @CheckAbilities({ action: Action.Read, subject: Subjects.Category })
+  @CheckAbilities({ action: Action.Publish, subject: Subjects.Category })
   @Get()
   findAll() {
     return this.categoryService.findAll();
@@ -35,9 +34,9 @@ export class CategoryController {
 
   @IsPublic()
   @CheckAbilities({ action: Action.Read, subject: Subjects.Category })
-  @Post('get-by')
-  findOne(@Body() payload: Category) {
-    return this.categoryService.findOne(payload);
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.categoryService.findOne(id);
   }
 
   @CheckAbilities({ action: Action.Update, subject: Subjects.Category })

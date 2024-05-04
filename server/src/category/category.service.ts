@@ -47,8 +47,8 @@ export class CategoryService {
     return await this.categoryModel.find();
   }
 
-  async findOne(payload: Category): Promise<Category> {
-    return await this.categoryModel.findOne(payload);
+  async findOne(id: string): Promise<Category> {
+    return await this.categoryModel.findById(id);
   }
 
   async update(id: string, updateCategoryDto: UpdateCategoryDto) {
