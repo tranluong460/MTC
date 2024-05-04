@@ -17,7 +17,7 @@ export class UserController {
   }
 
   @IsPublic()
-  @CheckAbilities({ action: Action.Read, subject: Subjects.User })
+  @CheckAbilities({ action: Action.Publish, subject: Subjects.User })
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.userService.findOne(id);

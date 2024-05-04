@@ -14,13 +14,19 @@ export class UserService {
   }
 
   async findOne(id: string): Promise<User> {
-    return await this.userModel.findById(id).select('-password -refresh_token');
+    return await this.userModel
+      .findById(id)
+      .select(
+        '-password -refresh_token -balance -ballot -roles_list -abilities_list -updatedAt',
+      );
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
     const resultUpdate = await this.userModel
       .findByIdAndUpdate(id, updateUserDto, { new: true })
-      .select('-password -refresh_token');
+      .select(
+        '-password -refresh_token -balance -ballot -roles_list -abilities_list -updatedAt',
+      );
 
     if (!resultUpdate)
       throw new BadRequestException('Cập nhật thông tin người dùng thất bại');
