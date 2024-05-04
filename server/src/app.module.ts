@@ -12,6 +12,7 @@ import { AuthModule } from './auth/auth.module';
 import { AbilityModule } from './ability/ability.module';
 import { AuthGuard } from './auth/auth.guard';
 import { CaslAbilityGuard } from './ability/casl-ability.guard';
+import { AuthorModule } from './author/author.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { CaslAbilityGuard } from './ability/casl-ability.guard';
     UserModule,
     AuthModule,
     AbilityModule,
+    AuthorModule,
   ],
   controllers: [AppController],
   providers: [

@@ -22,6 +22,7 @@ export enum Subjects {
   Ability = 'ability',
   Role = 'role',
   User = 'user',
+  Author = 'author',
 }
 
 export type AppAbility = MongoAbility<[Action, Subjects]>;
@@ -36,6 +37,7 @@ export class CaslAbilityFactory {
     } else {
       can(Action.Publish, Subjects.Auth);
       can(Action.Publish, Subjects.User);
+      can(Action.Publish, Subjects.Author);
     }
 
     user?.abilities_list.map(({ action, subject }) => {
