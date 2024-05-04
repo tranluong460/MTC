@@ -26,7 +26,7 @@ export class WorldController {
   }
 
   @IsPublic()
-  @CheckAbilities({ action: Action.Publish, subject: Subjects.World })
+  @CheckAbilities({ action: Action.Read, subject: Subjects.World })
   @Get()
   findAll() {
     return this.worldService.findAll();

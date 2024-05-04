@@ -27,14 +27,14 @@ export class CategoryController {
   }
 
   @IsPublic()
-  @CheckAbilities({ action: Action.Publish, subject: Subjects.Category })
+  @CheckAbilities({ action: Action.Read, subject: Subjects.Category })
   @Get()
   findAll() {
     return this.categoryService.findAll();
   }
 
   @IsPublic()
-  @CheckAbilities({ action: Action.Publish, subject: Subjects.Category })
+  @CheckAbilities({ action: Action.Read, subject: Subjects.Category })
   @Post('get-by')
   findOne(@Body() payload: Category) {
     return this.categoryService.findOne(payload);
