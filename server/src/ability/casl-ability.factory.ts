@@ -10,7 +10,6 @@ import { User } from '../user/entities/user.entity';
 export enum Action {
   Manage = 'manage',
   Publish = 'publish',
-  View = 'view',
   Read = 'read',
   Create = 'create',
   Update = 'update',

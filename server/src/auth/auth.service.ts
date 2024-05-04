@@ -14,6 +14,7 @@ import { RegisterAuthDto } from './dto/register-auth.dto';
 import { LoginAuthDto } from './dto/login-auth.dto';
 import { User } from '../user/entities/user.entity';
 import { Role } from '../role/entities/role.entity';
+import { Ability } from '../ability/entities/ability.entity';
 
 @Injectable()
 export class AuthService {
@@ -21,6 +22,7 @@ export class AuthService {
     private jwtService: JwtService,
     @InjectModel(User.name) private userModel: Model<User>,
     @InjectModel(Role.name) private roleModel: Model<Role>,
+    @InjectModel(Ability.name) private abilityModel: Model<Ability>,
   ) {}
 
   private async hashPassword(password: string): Promise<string> {
@@ -67,8 +69,8 @@ export class AuthService {
     const roles = await this.roleModel.find({ default: true });
     const roles_list = roles.map((role) => role._id);
 
-    // const abilities = await this.abilityModel.find({ default: true });
-    // const abilities_list = abilities.map((ability) => ability._id);
+    const abilities = await this.abilityModel.find({ default: true });
+    const abilities_list = abilities.map((ability) => ability._id);
 
     const hashPassword = await this.hashPassword(password);
 
@@ -76,7 +78,7 @@ export class AuthService {
       ...registerAuthDto,
       password: hashPassword,
       roles_list,
-      // abilities_list,
+      abilities_list,
     });
 
     resultRegister.save();

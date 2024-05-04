@@ -40,7 +40,7 @@ export class AuthGuard implements CanActivate {
 
       const user = await this.userModel
         .findById(decoded.idu)
-        .populate('roles_list')
+        .populate('roles_list abilities_list')
         .select('-password -refresh_token');
 
       if (!user) return false;
