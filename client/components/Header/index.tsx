@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Suspense } from "react";
 
 import Logo from "../Logo";
 import Search from "./Search";
@@ -19,7 +20,9 @@ const Header = async () => {
 
           <NavLink category_list={category_list} />
 
-          <Search />
+          <Suspense>
+            <Search />
+          </Suspense>
         </div>
       </nav>
     </header>
