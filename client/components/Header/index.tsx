@@ -1,9 +1,7 @@
 import Link from "next/link";
-import { Suspense } from "react";
 
 import Logo from "../Logo";
 import Search from "./Search";
-import NavLink from "./NavLink";
 import { ICategory } from "../../interface/category";
 import { getAllCategory } from "../../libs/category";
 
@@ -18,11 +16,7 @@ const Header = async () => {
             <Logo />
           </Link>
 
-          <NavLink category_list={category_list} />
-
-          <Suspense>
-            <Search />
-          </Suspense>
+          <Search />
         </div>
       </nav>
     </header>
