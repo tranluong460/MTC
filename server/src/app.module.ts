@@ -16,6 +16,7 @@ import { AuthorModule } from './author/author.module';
 import { CategoryModule } from './category/category.module';
 import { FactionModule } from './faction/faction.module';
 import { WorldModule } from './world/world.module';
+import { BookModule } from './book/book.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { WorldModule } from './world/world.module';
     CategoryModule,
     FactionModule,
     WorldModule,
+    BookModule,
   ],
   controllers: [AppController],
   providers: [
