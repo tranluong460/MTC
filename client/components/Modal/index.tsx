@@ -61,7 +61,9 @@ const Modal: React.FC<ModalProps> = ({ show, type, toggleModal }) => {
             </div>
 
             {type === "login" && <LoginForm />}
-            {type === "register" && <RegisterForm />}
+            {type === "register" && (
+              <RegisterForm onClickLogin={() => toggleModal(true, "login")} />
+            )}
 
             {type === "login" && (
               <div className="modal-footer justify-content-center bg-light text-center">
