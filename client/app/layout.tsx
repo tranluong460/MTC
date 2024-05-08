@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={SourceSansPro.className}>{children}</body>
+      <body className={`${SourceSansPro.className} page-home`}>{children}</body>
     </html>
   );
 }
