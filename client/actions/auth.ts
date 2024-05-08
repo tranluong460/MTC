@@ -5,7 +5,30 @@ import { JWT } from "next-auth/jwt";
 import { AuthError } from "next-auth";
 
 import { signIn, signOut } from "../auth";
-import { LoginSchema } from "../schemas/auth";
+import { LoginSchema, RegisterSchema } from "../schemas/auth";
+
+export const registerAccount = async (
+  values: z.infer<typeof RegisterSchema>
+) => {
+  const validatedFields = RegisterSchema.safeParse(values);
+
+  if (!validatedFields.success)
+    return {
+      message: "Dữ liệu không hợp lệ",
+      error: "Bad Request",
+      statusCode: 400,
+    };
+
+  const response = await fetch(process.env.BACKEND_URL + "/auth/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(validatedFields.data),
+  });
+
+  return await response.json();
+};
 
 export const loginAccount = async (values: z.infer<typeof LoginSchema>) => {
   const validatedFields = LoginSchema.safeParse(values);

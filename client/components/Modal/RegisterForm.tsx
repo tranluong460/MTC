@@ -4,9 +4,14 @@ import { useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { RegisterSchema } from "../../schemas/auth";
+import { RegisterSchema } from "@/schemas/auth";
+import { registerAccount } from "../../actions/auth";
 
-const RegisterForm = () => {
+type RegisterFormProps = {
+  onClickLogin: () => void;
+};
+
+const RegisterForm: React.FC<RegisterFormProps> = ({ onClickLogin }) => {
   const [isPending, startTransition] = useTransition();
 
   const {
@@ -23,10 +28,15 @@ const RegisterForm = () => {
   });
 
   const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
-    console.log(values);
-
     startTransition(() => {
-      toast.success("Đăng ký thành công");
+      registerAccount(values).then((data) => {
+        data?.error && toast.error(data.message);
+
+        if (data?.success) {
+          toast.success(data.message);
+          onClickLogin();
+        }
+      });
     });
   };
 
