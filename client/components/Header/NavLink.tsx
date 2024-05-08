@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 import { ICategory } from "../../interface/category";
 
@@ -7,11 +10,15 @@ type NavLinkProps = {
 };
 
 const NavLink: React.FC<NavLinkProps> = ({ category_list }) => {
+  const searchParams = useSearchParams();
+  const cate = searchParams.get("c");
+
   return (
     <ul className="navbar-nav mr-auto">
       <li className="nav-item dropdown dropdown-hover">
         <Link href="#" className="nav-link d-flex align-items-center">
-          <i className="nh-icon icon-menu fz-13 mr-2" /> Thể loại
+          <i className="nh-icon icon-menu fz-13 mr-2" />
+          Thể loại
         </Link>
 
         <div className="dropdown-menu dropdown-menu--category rounded-0">
@@ -20,7 +27,7 @@ const NavLink: React.FC<NavLinkProps> = ({ category_list }) => {
               <Link
                 key={category.slug}
                 href={{
-                  pathname: "truyen/",
+                  pathname: "/",
                   search: "c=" + category.slug,
                 }}
                 className={`dropdown-item col-6 d-flex align-items-center`}
