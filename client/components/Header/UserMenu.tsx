@@ -14,7 +14,7 @@ type UserMenuProps = {
 const UserMenu: React.FC<UserMenuProps> = ({ show, user }) => {
   const [isPending, startTransition] = useTransition();
 
-  const toggleLogout = async () => {
+  const toggleLogout = () => {
     startTransition(() => {
       logoutAccount()
         .then(() => {
