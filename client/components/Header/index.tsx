@@ -6,9 +6,10 @@ import Search from "./Search";
 import NavLink from "./NavLink";
 import LoggedIn from "./LoggedIn";
 import NotLoggedIn from "./NotLoggedIn";
+import { currentUser } from "../../libs/user";
 
-const Header = () => {
-  const user = false;
+const Header = async () => {
+  const user = await currentUser();
 
   return (
     <header className="header--read">
