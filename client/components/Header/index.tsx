@@ -51,7 +51,7 @@ const Header = async () => {
               </Link>
             </li>
 
-            {user ? <LoggedIn /> : <NotLoggedIn />}
+            {user ? <LoggedIn user={user} /> : <NotLoggedIn />}
           </ul>
         </div>
       </nav>

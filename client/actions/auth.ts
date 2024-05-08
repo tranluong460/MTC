@@ -4,7 +4,7 @@ import * as z from "zod";
 import { JWT } from "next-auth/jwt";
 import { AuthError } from "next-auth";
 
-import { signIn } from "../auth";
+import { signIn, signOut } from "../auth";
 import { LoginSchema } from "../schemas/auth";
 
 export const loginAccount = async (values: z.infer<typeof LoginSchema>) => {
@@ -41,6 +41,10 @@ export const loginAccount = async (values: z.infer<typeof LoginSchema>) => {
 
     throw error;
   }
+};
+
+export const logoutAccount = async () => {
+  await signOut();
 };
 
 export const refreshToken = async (token: JWT) => {

@@ -17,7 +17,7 @@ export class UserService {
     return await this.userModel
       .findById(id)
       .select(
-        '-password -refresh_token -balance -ballot -roles_list -abilities_list -updatedAt',
+        '-password -refresh_token -roles_list -abilities_list -updatedAt',
       );
   }
 
