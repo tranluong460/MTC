@@ -1,17 +1,12 @@
-"use client";
-
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
+import CategoryList from "./CategoryList";
 import { ICategory } from "../../interface/category";
+import { getAllCategory } from "../../libs/category";
 
-type NavLinkProps = {
-  category_list: ICategory[];
-};
-
-const NavLink: React.FC<NavLinkProps> = ({ category_list }) => {
-  const searchParams = useSearchParams();
-  const cate = searchParams.get("c");
+const NavLink = async () => {
+  const category_list: ICategory[] = await getAllCategory();
 
   return (
     <ul className="navbar-nav mr-auto">
@@ -22,23 +17,9 @@ const NavLink: React.FC<NavLinkProps> = ({ category_list }) => {
         </Link>
 
         <div className="dropdown-menu dropdown-menu--category rounded-0">
-          <div className="row no-gutters">
-            {category_list?.map((category) => (
-              <Link
-                key={category.slug}
-                href={{
-                  pathname: "/",
-                  search: "c=" + category.slug,
-                }}
-                className={`${
-                  cate === category.slug ? "active" : ""
-                } dropdown-item col-6 d-flex align-items-center`}
-              >
-                <i className="svg-icon mr-2" />
-                {category.name}
-              </Link>
-            ))}
-          </div>
+          <Suspense fallback={<div>Đang lấy dữ liệu...</div>}>
+            <CategoryList category_list={category_list} />
+          </Suspense>
         </div>
       </li>
 

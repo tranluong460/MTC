@@ -3,12 +3,8 @@ import Link from "next/link";
 import Logo from "../Logo";
 import Search from "./Search";
 import NavLink from "./NavLink";
-import { ICategory } from "../../interface/category";
-import { getAllCategory } from "../../libs/category";
 
-const Header = async () => {
-  const category_list: ICategory[] = await getAllCategory();
-
+const Header = () => {
   return (
     <header className="header--read">
       <nav className="navbar navbar--read navbar-light navbar-expand">
@@ -17,7 +13,7 @@ const Header = async () => {
             <Logo />
           </Link>
 
-          <NavLink category_list={category_list} />
+          <NavLink />
 
           <Search />
         </div>
