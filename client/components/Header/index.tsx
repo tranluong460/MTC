@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Suspense } from "react";
 
 import Logo from "../Logo";
 import Search from "./Search";
@@ -18,9 +17,7 @@ const Header = async () => {
             <Logo />
           </Link>
 
-          <Suspense>
-            <NavLink category_list={category_list} />
-          </Suspense>
+          <NavLink category_list={category_list} />
 
           <Search />
         </div>
