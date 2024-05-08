@@ -22,18 +22,6 @@ const NavLink = async () => {
           </Suspense>
         </div>
       </li>
-
-      <li className="nav-item dropdown dropdown-hover">
-        <Link href="#" className="nav-link d-flex align-items-center">
-          Bảng xếp hạng
-        </Link>
-
-        <div className="dropdown-menu rounded-0">
-          <Link href="#" className="dropdown-item">
-            Thịnh hành
-          </Link>
-        </div>
-      </li>
     </ul>
   );
 };
