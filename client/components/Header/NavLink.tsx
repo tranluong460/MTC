@@ -30,7 +30,9 @@ const NavLink: React.FC<NavLinkProps> = ({ category_list }) => {
                   pathname: "/",
                   search: "c=" + category.slug,
                 }}
-                className={`dropdown-item col-6 d-flex align-items-center`}
+                className={`${
+                  cate === category.slug ? "active" : ""
+                } dropdown-item col-6 d-flex align-items-center`}
               >
                 <i className="svg-icon mr-2" />
                 {category.name}
