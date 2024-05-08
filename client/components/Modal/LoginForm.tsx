@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { LoginSchema } from "../../schemas/auth";
+import { loginAccount } from "../../actions/auth";
 
 const LoginForm = () => {
   const [isPending, startTransition] = useTransition();
@@ -23,10 +24,11 @@ const LoginForm = () => {
   });
 
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-    console.log(values);
-
     startTransition(() => {
-      toast.success("Đăng nhập thành công");
+      loginAccount(values).then((data: any) => {
+        data?.error && toast.error(data.message);
+        !data && toast.success("Đăng nhập thành công");
+      });
     });
   };
 
