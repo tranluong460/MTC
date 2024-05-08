@@ -4,6 +4,7 @@ import Logo from "../Logo";
 import Search from "./Search";
 import { ICategory } from "../../interface/category";
 import { getAllCategory } from "../../libs/category";
+import NavLink from "./NavLink";
 
 const Header = async () => {
   const category_list: ICategory[] = await getAllCategory();
@@ -15,6 +16,8 @@ const Header = async () => {
           <Link href="/" className="navbar-brand mr-4">
             <Logo />
           </Link>
+
+          <NavLink category_list={category_list} />
 
           <Search />
         </div>
