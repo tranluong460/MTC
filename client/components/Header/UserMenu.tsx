@@ -19,10 +19,6 @@ const UserMenu: React.FC<UserMenuProps> = ({ show, user }) => {
       logoutAccount()
         .then(() => {
           toast.success("Đăng xuất thành công");
-
-          setTimeout(() => {
-            location.reload();
-          }, 500);
         })
         .catch(() => {
           toast.error("Đã có lỗi xả ra");
