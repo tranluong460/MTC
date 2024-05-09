@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Toaster } from "react-hot-toast";
 import { Source_Sans_3 } from "next/font/google";
 
 import "./globals.css";
@@ -31,7 +32,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`page-home ${SourceSansPro.className}`}>{children}</body>
+      <body className={`page-home ${SourceSansPro.className}`}>
+        <Toaster />
+        {children}
+      </body>
     </html>
   );
 }

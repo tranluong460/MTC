@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import Modal from "../Modal";
+
 const NotLoggedIn = () => {
   const [modal, setModal] = useState({ show: false, type: "" });
 
@@ -29,6 +31,8 @@ const NotLoggedIn = () => {
           Đăng ký
         </Link>
       </li>
+
+      <Modal show={modal.show} type={modal.type} toggleModal={toggleModal} />
     </>
   );
 };
