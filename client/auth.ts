@@ -2,7 +2,6 @@ import NextAuth, { AuthError } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
 import { LoginSchema } from "./schemas/auth";
-import { LoginAccount } from "./libs/auth";
 import { refreshToken } from "./actions/auth";
 import { getUserById } from "./libs/user";
 
@@ -19,7 +18,15 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 
         if (!validatedFields.success) return null;
 
-        const data = await LoginAccount(validatedFields.data);
+        const response = await fetch(process.env.BACKEND_URL + "/auth/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(validatedFields.data),
+        });
+
+        const data = await response.json();
 
         if (data?.error) throw new AuthError(data.message, { cause: data });
 
