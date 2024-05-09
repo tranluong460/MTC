@@ -2,14 +2,12 @@ import Link from "next/link";
 import Image from "next/image";
 
 import Logo from "../Logo";
-import Search from "./Search";
-import NavLink from "./NavLink";
+import SearchBar from "./SearchBar";
 import LoggedIn from "./LoggedIn";
 import NotLoggedIn from "./NotLoggedIn";
-import { currentUser } from "../../libs/user";
 
-const Header = async () => {
-  const user = await currentUser();
+const Header = () => {
+  const user = false;
 
   return (
     <header className="header--read">
@@ -19,9 +17,7 @@ const Header = async () => {
             <Logo />
           </Link>
 
-          <NavLink />
-
-          <Search />
+          <SearchBar />
 
           <ul
             className={
@@ -51,7 +47,7 @@ const Header = async () => {
               </Link>
             </li>
 
-            {user ? <LoggedIn user={user} /> : <NotLoggedIn />}
+            {user ? <LoggedIn /> : <NotLoggedIn />}
           </ul>
         </div>
       </nav>

@@ -1,4 +1,4 @@
-const Search = () => {
+const SearchBar = () => {
   return (
     <div className="header__search-form ml-auto w-25">
       <input
@@ -15,4 +15,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default SearchBar;

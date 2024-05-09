@@ -2,15 +2,15 @@ import Link from "next/link";
 
 const Banner = () => {
   return (
-    <Link href="#" target="_blank">
+    <Link href="#">
       <span
         className="top-bg-op-box"
         style={{
           backgroundImage:
-            "url('https://static.cdnno.com/storage/topbox/e092191c942b9f3f1c62cc74cfe9df35.webp')",
+            "url(https://static.cdnno.com/storage/topbox/7718aafff5eff59005a5ce7ea61a9cb4.webp)",
           position: "absolute",
           zIndex: 0,
-          left: "0px",
+          left: 0,
           overflow: "hidden",
           width: "100%",
           height: "388px",

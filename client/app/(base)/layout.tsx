@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
-import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Banner from "../../components/Banner";
+import Footer from "../../components/Footer";
 
 export const metadata: Metadata = {
   title: "Mê Truyện Chữ - MeTruyenChu - TruyenCv",
@@ -18,7 +18,7 @@ export default function BaseLayout({
     <>
       <Header />
       <Banner />
-      <main className="main pb-4">{children}</main>
+      {children}
       <Footer />
     </>
   );
