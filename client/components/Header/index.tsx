@@ -5,9 +5,10 @@ import Logo from "../Logo";
 import SearchBar from "./SearchBar";
 import LoggedIn from "./LoggedIn";
 import NotLoggedIn from "./NotLoggedIn";
+import { currentUser } from "../../libs/user";
 
-const Header = () => {
-  const user = false;
+const Header = async () => {
+  const user = await currentUser();
 
   return (
     <header className="header--read">
@@ -47,7 +48,7 @@ const Header = () => {
               </Link>
             </li>
 
-            {user ? <LoggedIn /> : <NotLoggedIn />}
+            {user ? <LoggedIn user={user} /> : <NotLoggedIn />}
           </ul>
         </div>
       </nav>
