@@ -49,6 +49,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async session({ session, token }) {
       if (!token._id || !token.token) return session;
 
+      if (token.error) {
+        session.error = token.error;
+
+        return session;
+      }
+
       const user = await getUserById(token._id);
 
       session.user = user;

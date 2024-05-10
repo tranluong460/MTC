@@ -3,6 +3,9 @@ import { IUser } from "../interface/user";
 
 export const currentUser = async () => {
   const session = await auth();
+
+  if (session?.error) return null;
+
   return session?.user;
 };
 

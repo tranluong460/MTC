@@ -11,6 +11,7 @@ import { getAllCategory } from "../../libs/category";
 
 const Header = async () => {
   const user = await currentUser();
+
   const category_list = await getAllCategory();
 
   return (

@@ -41,12 +41,12 @@ export class AuthService {
   private async generateToken(idu: mongoose.Schema.Types.ObjectId) {
     const access_token = await this.jwtService.signAsync(
       { idu },
-      { expiresIn: process.env.EXP_IN_ACCESS_TOKEN },
+      { expiresIn: '1s' },
     );
 
     const refresh_token = await this.jwtService.signAsync(
       { idu },
-      { expiresIn: process.env.EXP_IN_REFRESH_TOKEN },
+      { expiresIn: '3s' },
     );
 
     await this.userModel.findByIdAndUpdate(idu, { refresh_token });

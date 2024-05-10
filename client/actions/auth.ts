@@ -83,7 +83,7 @@ export const refreshToken = async (token: JWT) => {
 
   const data = await response.json();
 
-  if (data.error) return null;
+  if (data.error) return { ...token, error: "RefreshAccessTokenError" };
 
   token.token = data;
 
