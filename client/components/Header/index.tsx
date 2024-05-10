@@ -2,13 +2,18 @@ import Link from "next/link";
 import Image from "next/image";
 
 import Logo from "../Logo";
-import SearchBar from "./SearchBar";
-import LoggedIn from "./LoggedIn";
-import NotLoggedIn from "./NotLoggedIn";
+import Navbar from "./Navbar";
+import Search from "./Search";
+import Authenticated from "./LoggedIn";
+import Unauthenticated from "./NotLoggedIn";
 import { currentUser } from "../../libs/user";
+import { ICategory } from "../../interface/category";
+import { getAllCategory } from "../../libs/category";
 
 const Header = async () => {
   const user = await currentUser();
+
+  const category_list: ICategory[] = await getAllCategory();
 
   return (
     <header className="header--read">
@@ -18,7 +23,9 @@ const Header = async () => {
             <Logo />
           </Link>
 
-          <SearchBar />
+          <Navbar category_list={category_list} />
+
+          <Search />
 
           <ul
             className={
@@ -48,7 +55,7 @@ const Header = async () => {
               </Link>
             </li>
 
-            {user ? <LoggedIn user={user} /> : <NotLoggedIn />}
+            {user ? <Authenticated user={user} /> : <Unauthenticated />}
           </ul>
         </div>
       </nav>

@@ -71,26 +71,21 @@ export const logoutAccount = async () => {
 };
 
 export const refreshToken = async (token: JWT) => {
-  try {
-    const response = await fetch(
-      process.env.BACKEND_URL + "/auth/refresh-token",
-      {
-        method: "POST",
-        headers: {
-          authorization: "Bearer " + token.token?.refresh_token,
-        },
-      }
-    );
+  const response = await fetch(
+    process.env.BACKEND_URL + "/auth/refresh-token",
+    {
+      method: "POST",
+      headers: {
+        authorization: "Bearer " + token.token?.refresh_token,
+      },
+    }
+  );
 
-    const data = await response.json();
+  const data = await response.json();
 
-    if (data.error)
-      return { ...token, error: "RefreshAccessTokenError" as const };
+  if (data.error) return null;
 
-    token.token = data;
+  token.token = data;
 
-    return token;
-  } catch (error) {
-    return { ...token, error: "RefreshAccessTokenError" as const };
-  }
+  return token;
 };

@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 import Avatar from "../Avatar";
 import UserMenu from "./UserMenu";
-import { IUser } from "../../interface/user";
+import { IUser } from "@/interface/user";
 
 type LoggedInProps = {
   user: IUser;

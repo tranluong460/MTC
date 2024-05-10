@@ -2,11 +2,10 @@ import NextAuth, { AuthError } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
 import { LoginSchema } from "./schemas/auth";
-import { refreshToken } from "./actions/auth";
 import { getUserById } from "./libs/user";
+import { refreshToken } from "./actions/auth";
 
-export const { auth, handlers, signIn, signOut } = NextAuth({
-  session: { strategy: "jwt" },
+export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Credentials({
       credentials: {
@@ -44,9 +43,6 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 
       if (currentTime < expirationTime) return token;
 
-      if (token && token.token && !token.token.refresh_token)
-        throw new Error("Missing refresh token");
-
       return await refreshToken(token);
     },
     async session({ session, token }) {
@@ -60,4 +56,5 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       return session;
     },
   },
+  session: { strategy: "jwt" },
 });

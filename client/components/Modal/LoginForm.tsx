@@ -5,7 +5,7 @@ import { useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { LoginSchema } from "../../schemas/auth";
+import { LoginSchema } from "@/schemas/auth";
 import { loginAccount } from "../../actions/auth";
 
 const LoginForm = () => {

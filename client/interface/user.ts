@@ -1,9 +1,6 @@
 export interface IUser {
-  email: string;
+  name: string;
+  image: string;
   ballot: number;
   balance: number;
-  name: string;
-  phone: string;
-  sex: number;
-  image: string;
 }

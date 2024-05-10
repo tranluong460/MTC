@@ -10,7 +10,6 @@ declare module "next-auth" {
       access_token_exp?: any;
     };
     user: IUser;
-    error?: "RefreshAccessTokenError";
   }
 }
 
