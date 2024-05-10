@@ -35,11 +35,7 @@ const RecentCard: React.FC<RecentCardProps> = ({ book }) => {
       </td>
 
       <td className="align-middle text-tertiary">
-        <span className="text-overflow-1-lines">
-          {`${book.user_id.first_name || ""} ${
-            book.user_id.last_name || ""
-          }`.trim()}
-        </span>
+        <span className="text-overflow-1-lines">{book.user_id.name}</span>
       </td>
 
       <td className="align-middle text-tertiary text-right">{formattedTime}</td>

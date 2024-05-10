@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Source_Sans_3 } from "next/font/google";
 import { Toaster } from "react-hot-toast";
+import { Source_Sans_3 } from "next/font/google";
 
 import "./globals.css";
 
