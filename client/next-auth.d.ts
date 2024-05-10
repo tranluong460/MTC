@@ -9,7 +9,7 @@ declare module "next-auth" {
       refresh_token?: string;
       access_token_exp?: any;
     };
-    user: IUser;
+    user: IUser | AdapterUser;
     error?: RefreshAccessTokenError;
   }
 }
