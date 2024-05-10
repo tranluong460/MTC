@@ -13,7 +13,10 @@ type LoggedInProps = {
 
 const LoggedIn: React.FC<LoggedInProps> = ({ user }) => {
   const dropdownRef = useRef<HTMLLIElement>(null);
-  const [show, setShow] = useState({ user: false, notification: false });
+  const [show, setShow] = useState<{ user: boolean; notification: boolean }>({
+    user: false,
+    notification: false,
+  });
 
   const toggleShowUser = () =>
     setShow({ user: !show.user, notification: false });
