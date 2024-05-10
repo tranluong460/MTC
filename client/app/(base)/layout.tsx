@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 import Header from "../../components/Header";
-import Footer from "../../components/Footer";
 import Banner from "../../components/Banner";
+import Footer from "../../components/Footer";
 
 export const metadata: Metadata = {
   title: "Mê Truyện Chữ - MeTruyenChu - TruyenCv",
@@ -11,9 +11,7 @@ export const metadata: Metadata = {
   keywords: ["me truyen chu", "truyen cv", "truyen convert", "truyen chu"],
 };
 
-export default function BaseLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+const BaseLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
     <>
       <Header />
@@ -22,4 +20,6 @@ export default function BaseLayout({
       <Footer />
     </>
   );
-}
+};
+
+export default BaseLayout;

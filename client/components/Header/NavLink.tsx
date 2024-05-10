@@ -5,13 +5,12 @@ import { useSearchParams } from "next/navigation";
 
 import { ICategory } from "../../interface/category";
 
-type NavbarProps = {
+type NavLinkProps = {
   category_list: ICategory[];
 };
 
-const Navbar: React.FC<NavbarProps> = ({ category_list }) => {
+const NavLink: React.FC<NavLinkProps> = ({ category_list }) => {
   const searchParams = useSearchParams();
-
   const cate_id = searchParams.get("c");
 
   return (
@@ -57,4 +56,4 @@ const Navbar: React.FC<NavbarProps> = ({ category_list }) => {
   );
 };
 
-export default Navbar;
+export default NavLink;

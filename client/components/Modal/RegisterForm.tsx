@@ -43,10 +43,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onClickLogin }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="modal-body">
       <div className="form-group">
-        <label
-          htmlFor="email"
-          className={errors.password ? "text-red-500" : ""}
-        >
+        <label htmlFor="email" className={errors.email ? "text-red-500" : ""}>
           Email
         </label>
 
@@ -81,7 +78,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onClickLogin }) => {
       <div className="form-group">
         <label
           htmlFor="confirm_password"
-          className={errors.password ? "text-red-500" : ""}
+          className={errors.confirm_password ? "text-red-500" : ""}
         >
           Nhập lại khẩu
         </label>
