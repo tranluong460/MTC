@@ -6,6 +6,7 @@ import { getUserById } from "./libs/user";
 import { refreshToken } from "./actions/auth";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  session: { strategy: "jwt" },
   providers: [
     Credentials({
       credentials: {
@@ -56,5 +57,4 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return session;
     },
   },
-  session: { strategy: "jwt" },
 });
